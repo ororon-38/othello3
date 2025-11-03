@@ -115,8 +115,14 @@ function App() {
     }
     return(true);
   }
+
+  function myturn(){
+    if (gameState === null) return false;
+    return(players[gameState.turn].id === me.id);
+  }
   
   function click(cell:Cell){
+    if (!myturn()) return;
     const newconf = new Map();
     gameState.conf.forEach((v,k)=>{
       newconf.set(k,v);
