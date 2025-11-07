@@ -233,7 +233,11 @@ function App() {
 
   function Turn(){
     const stone = <span style={{color:colors[gameState.turn]}}>⚫︎</span> 
-    return <h1 style={{backgroundColor:"skyblue"}}> {players[gameState.turn].nickname + "さんの番です"} {stone}</h1>;
+    if (myturn()) {
+      return <h1 style={{backgroundColor:"skyblue"}}> {"あなたの番です"} {stone}</h1>;
+    } else {
+      return <h1 style={{backgroundColor:"skyblue"}}> {players[gameState.turn].nickname + "さんの番です"} {stone}</h1>;
+    }
   }
   
   function start(){
