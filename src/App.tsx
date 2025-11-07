@@ -204,8 +204,8 @@ function App() {
     const px = cell.x + 0.5*cell.y;
     const py = Math.sqrt(3)/2*cell.y;
     const I = [0,1,2,3,4,5];
-    const x = I.map((i)=>scale*Math.cos(2*Math.PI/6*(i+0.5))/Math.sqrt(3));
-    const y = I.map((i)=>scale*Math.sin(2*Math.PI/6*(i+0.5))/Math.sqrt(3));
+    const x = I.map((i)=>scale*Math.cos(2*Math.PI/6*(i-0.5))/Math.sqrt(3));
+    const y = I.map((i)=>scale*Math.sin(2*Math.PI/6*(i-0.5))/Math.sqrt(3));
     let points = "";
     for (let i = 0; i < 6; i++){
       points += (" " + x[i] + " " + y[i] + " ");
@@ -228,7 +228,7 @@ function App() {
       board.push(<Cell cell={decodeKey(cell)} color={color}
 		       canPut={canPut(gameState.conf, decodeKey(cell), gameState.turn)}/>);
     })
-    return(<g transform={"translate("+scale+","+scale+")"}> {board} </g>);
+    return(<g transform={`translate(${scale},${scale*7}) scale(1,-1)`}> {board} </g>);
   }
 
   function Turn(){
