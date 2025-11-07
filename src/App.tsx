@@ -20,6 +20,8 @@ function App() {
   const [gameState, setGameState] = useState<GameState>(init());
   const scale = 100;
 
+  const colors = ["black","white","red"]
+
   const directions = [
     [1, 0], [-1, 0],
     [0, 1], [0, -1],
@@ -230,7 +232,8 @@ function App() {
   }
 
   function Turn(){
-    return <h1> {players[gameState.turn].nickname + "さんの番です"} </h1>;
+    const stone = <span style={{color:colors[gameState.turn]}}>⚫︎</span> 
+    return <h1 style={{backgroundColor:"skyblue"}}> {players[gameState.turn].nickname + "さんの番です"} {stone}</h1>;
   }
   
   function start(){
